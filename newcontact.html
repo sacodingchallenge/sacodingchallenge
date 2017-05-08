@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  <title>San Antonio Coding Challenge - Contact</title>
+</head>
+<body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="logo">
+        	<a href="index.html"><img src="images/sacodingchallenge.png" alt="San Antonio Coding Challenge logo"></a>
+        </div>
+      </div><!-- navbar-header -->
+      <div class="collapse navbar-collapse" id="collapse">
+        <ul class="nav navbar-nav navbar-right">
+          	<li><a href="index.html">{home}</a></li>
+            <li><a href="about.html">{about}</a></li>
+            <li><a href="events.html">{events}</a></li>
+            <li><a href="sponsors.html">{sponsors}</a></li>
+        	   <li class="active"><a href="contact.html">{contact}</a></li>
+        </ul>
+      </div><!-- collapse navbar-collapse -->
+    </div><!-- container -->
+  </nav>
+
+
+
+<div class="jumbotron">
+    <div class="content container">  
+    <h1>contact</h1>      
+    
+  </div>
+</div>
+
+<div class="content container">  
+    
+
+           <div class="row">
+
+                <div class="col-lg-8 col-lg-offset-2">
+
+                  
+
+                    <form id="contact-form" name="htmlform" method="post" action="html_form_send.php" role="form">
+
+                        <div class="messages"></div>
+
+                        <div class="controls">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="first_name">Firstname *</label>
+                                        <input id="first_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lastname">Lastname *</label>
+                                        <input id="lastname" type="text" name="surname" class="form-control" placeholder="Please enter your lastname *" required="required" data-error="Lastname is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email *</label>
+                                        <input id="email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="comments">Message *</label>
+                                        <textarea id="comments" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="submit" class="btn btn-success btn-send" value="Send message">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-muted"><strong>*</strong> These fields are required. Contact form template by <a href="https://bootstrapious.com/p/how-to-build-a-working-bootstrap-contact-form" target="_blank">Bootstrapious</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div><!-- /.8 -->
+
+            </div> <!-- /.row--> 
+  
+</div><!-- content container -->
+
+
+<!-- <a href="mailto:example@email.com">your anchor text</a>-->
+
+
+<footer align="center"><img src="images/sacodingchallengesmall.png" alt="San Antonio Coding Challenge logo">Copyright 2017</footer>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
