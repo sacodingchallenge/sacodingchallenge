@@ -1,0 +1,24 @@
+.navbar-default {
+  border: none;
+}
+
+.navbar {
+   background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+   font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+   font-size: 22px;
+}
+
+.navbar li { color: #000 }
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+}
+
