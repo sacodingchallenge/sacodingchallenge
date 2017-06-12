@@ -34,6 +34,8 @@
 	like individual albums and events. 
 	Consult https://www.meetup.com/meetup_api/docs/ for more info!
 */
+
+
 const meetupOptions = {
 			0:{
 				urladd:"photo_albums?",
@@ -55,6 +57,13 @@ const meetupOptions = {
 					scroll:null,
 					status:"upcoming"
 				}
+			},
+			//Dummy Option to allow reuse of code without having to rewrite a lot of it.
+			2:{
+				sitekind:"intersite",
+				urladd:null,
+				type:"POST",
+				options:{}
 			}
 		}
 
@@ -66,7 +75,7 @@ class CoolCheck{
 		//Simple variable to loop while processing the request.
 		this.working = false
 	}
-	JSONRequest(int,opts,callback){
+	JSONRequest(int,opts,stopURL,callback){
 		/*
 			Note that I dun goofed and CORS shot me in the foot once again.
 		  	This is being sent to a PHP script as a POST request with all
@@ -75,23 +84,27 @@ class CoolCheck{
 		let letsMeet = new XMLHttpRequest()
 		console.log(this.apibase);
 		let baseurl = this.apibase+this.options[int].urladd
-		let siteurl = window.location.origin+"/utils/lazyphpreturn.php"
+		let siteurl = window.location.origin+stopURL
 		letsMeet.open("POST",siteurl,true)
 		letsMeet.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		letsMeet.onreadystatechange = ()=>{
 			if(letsMeet.readyState === 4 && letsMeet.status === 200){
-				appendText("HERE ARE THOSE YUMMY PICTURES!")
-				this.returnInfo = JSON.parse(letsMeet.responseText)
+				console.log("HERE ARE THOSE YUMMY PICTURES!")
+				//Adding a try/catch because of scope creep.
+				try{
+					this.returnInfo = JSON.parse(letsMeet.responseText)
+				} catch(e){
+					this.returnInfo = letsMeet.responseText
+				}
 				console.log(this.returnInfo);
 				callback(this.returnInfo)
 				
 			}else{
-				appendText("WHOOPS! THERE WAS AN ERROR!")
+				console.error("WHOOPS! THERE WAS AN ERROR!")
 			}
 			this.working = false
 		}
 		let sendInfo = this.buildGetRequest(int,opts,this.options[int].type,baseurl)
-		console.log(sendInfo);
 		this.working = true
 		letsMeet.send(sendInfo)
 	}
@@ -101,6 +114,18 @@ class CoolCheck{
 		shortOpts.type = type
 		let requestString = []
 		//Kinda redundant need to DRY.
+		if ("sitekind" in this.options[int]){
+			for(let key in opts){
+				if(key == "venue"){
+					for(let part in opts[key]){
+						requestString.push(part+"="+opts[key][part])
+					}
+				}else{
+					requestString.push(key+'='+opts[key])
+				}
+			}
+			return requestString.join('&')
+		}
 		for (let key in shortOpts){
 				if(key in opts){
 					shortOpts[key] = opts[key]
@@ -108,13 +133,6 @@ class CoolCheck{
 			requestString.push(key+'='+shortOpts[key])
 		}
 		return requestString.join('&')
-	}
-	get AllThatInfo(){
-		if (this.returnInfo != null)return this.returnInfo;
-		return false;
-	}
-	get StillAtIt(){
-		return this.working
 	}
 }
 
@@ -155,7 +173,7 @@ let appendPics = (infoJson)=>{
 Wrapping in a DOMContentLoaded to allow for execution once the page loads
 and to minimize any interference with other scripts on a page.
 */
-document.addEventListener("DOMContentLoaded",()=>{
+/*document.addEventListener("DOMContentLoaded",()=>{
 	let requestObj = new CoolCheck(meetupOptions,"San-Antonio-PHP-Meetup") 
 	allowClick(requestObj);
-});
+});*/

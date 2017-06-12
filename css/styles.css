@@ -22,3 +22,14 @@ h6 {
   font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 }
 
+
+/*Some minor style changes...*/
+div.col-sm-4{
+	display:flex;
+	flex-direction: column;
+}
+div.col-sm-4 span.fa-stack,div.col-sm-4 h2{
+	position: relative;
+	display:inline-block;
+	margin:0.5rem auto;
+}
