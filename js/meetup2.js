@@ -141,6 +141,7 @@ class CoolCheck{
 	not really needed in the grand scheme of things and can be ignored or modified
 	for your purposes.
 */
+//Lazy upload ignore
 let appendText = (text)=>{
 	const results = document.querySelector('#results')
 	results.innerHTML = text
