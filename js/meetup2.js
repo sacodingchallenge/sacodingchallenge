@@ -75,7 +75,7 @@ class CoolCheck{
 		//Simple variable to loop while processing the request.
 		this.working = false
 	}
-	JSONRequest(int,opts,stopURL,callback){
+	JSONRequest(int,opts,stopURL,callback,callbackopts){
 		/*
 			Note that I dun goofed and CORS shot me in the foot once again.
 		  	This is being sent to a PHP script as a POST request with all
@@ -96,9 +96,11 @@ class CoolCheck{
 				} catch(e){
 					this.returnInfo = letsMeet.responseText
 				}
-				console.log(this.returnInfo);
-				callback(this.returnInfo)
-				
+				if(callbackopts !== undefined){
+					callback(this.returnInfo,callbackopts)	
+				} else {
+					callback(this.returnInfo)	
+				}
 			}else{
 				console.error("WHOOPS! THERE WAS AN ERROR!")
 			}
@@ -116,9 +118,17 @@ class CoolCheck{
 		//Kinda redundant need to DRY.
 		if ("sitekind" in this.options[int]){
 			for(let key in opts){
+				//Ghetto conversion from milliseconds to plain ol' seconds.
+				if (["time","updated","utc_offset"].includes(key)){
+					opts[key] = Number(String(opts[key]).substring(0,String(opts[key]).length-3))
+				}
 				if(key == "venue"){
 					for(let part in opts[key]){
-						requestString.push(part+"="+opts[key][part])
+						if (part == "name"){
+							requestString.push("venuename"+"="+opts[key][part])
+						} else {
+							requestString.push(part+"="+opts[key][part])
+						}
 					}
 				}else{
 					requestString.push(key+'='+opts[key])
@@ -140,7 +150,7 @@ class CoolCheck{
 	Some Debugging functions for the page that I am testing this on. These are
 	not really needed in the grand scheme of things and can be ignored or modified
 	for your purposes.
-*/
+
 //Lazy upload ignore
 let appendText = (text)=>{
 	const results = document.querySelector('#results')
