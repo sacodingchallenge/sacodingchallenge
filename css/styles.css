@@ -61,7 +61,8 @@ h6 {
 
 #eventDetails {
 	text-align: center;
-}
+/*	flex: 0 0 auto;
+*/}
 
 .help .ui.card>.content,
 .help .ui.cards>.card>.content {

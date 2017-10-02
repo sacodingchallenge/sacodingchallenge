@@ -7,16 +7,16 @@
 
 	<title>San Antonio Coding Challenge</title>
 
-	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="lib/semantic/semantic.min.css">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/semantic/semantic.min.css">
+	<link rel="stylesheet" href="/bootstrap.min.css">
+	<link rel="stylesheet" href="/styles.css">
 
 </head>
 
 <body>
 
-	<$- include partials/nav.ejs %>
+	<%- include partials/nav.ejs %>
 
 	<div class="jumbotron">
 		<div class="content container">
@@ -28,28 +28,31 @@
 		
 		<div class="ui cards">
 
-<!-- $('#eventName').text(dataObj.name);
-$('#eventTime').html('<p><i class="fa fa-lg fa-calendar"></i></p><p>' + dataObj.time + '</p><p>6:30 PM – 9:30 PM CDT</p>');
-$('#eventDescription').html(dataObj.description);
-$('#eventLocation').html('<i class="fa fa-lg fa-map-marker"></i></br>' + dataObj.location);
-$('#eventURL').attr('href', dataObj.url);
- -->
 			<div class="ui card" id="mainEventInfo">
 				<div class="content">
-					<div class="header" id="eventName"></div>
+					<div class="header" id="eventName"><%= name %></div>
 				</div>
-				<div class="content" id="eventDescription"></div>
+				<div class="content" id="eventDescription"><%- description %></div>
 				<div class="extra content">
-					<a id="eventURL" target="_blank" class="ui button"><i class="fa fa-lg fa-meetup"></i> Meetup</a>
+					<a href="<% url %>" id="eventURL" target="_blank" class="ui button"><i class="fa fa-lg fa-meetup"></i> Meetup</a>
 				</div>
 			</div>
 
 			<div class="ui card" id="eventDetails">
 				<div class="content">
-					<div id="eventTime"></div>
+					<div id="eventTime">
+						<p><i class="fa fa-lg fa-calendar"></i></p>
+						<p><%= time %></p>
+						<p>6:30 PM – 9:30 PM CDT</p>
+					</div>
 				</div>
 				<div class="content">
-					<div id="eventLocation"></div>
+					<div id="eventLocation">
+						<p><i class="fa fa-lg fa-map-marker"></i></p>
+						<p><%= venue %></p>
+						<p><%= address %></p>
+						<p><%= city %>, <%= state %></p>
+					</div>
 				</div>
 			</div>
 
@@ -57,12 +60,11 @@ $('#eventURL').attr('href', dataObj.url);
 
 	</div>
 
-	<$- include partials/footer.ejs %>
+	<%- include partials/footer.ejs %>
 
 	<script src="/jquery-2.1.4.min.js"></script>
 	<script src="/bootstrap.min.js"></script>
 	<script src="/semantic/semantic.min.js"></script>
-	<script src="/events.js"></script>
 
 </body>
 
