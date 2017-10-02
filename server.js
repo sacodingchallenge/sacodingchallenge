@@ -1,5 +1,9 @@
 const express = require('express');
 const ejs = require('ejs');
+const request = require('request');
+
+const eventData = require('./js/events.js');
+console.log(eventData());
 
 const port = process.env.PORT || 3000;
 var app = express();
@@ -24,7 +28,7 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/events', (req, res) => {
-	res.render('events', {});
+	res.render('events', eventData);
 });
 
 app.get('/sponsors', (req, res) => {

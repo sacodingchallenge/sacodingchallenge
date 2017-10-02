@@ -1,27 +1,45 @@
-var dataObj = {};
+const request = require('request');
 
 function getData() {
-	$(document).ready(function() {
-		var url = "https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=San-Antonio-PHP-Meetup&status=upcoming&page=8";
-		$.ajax({
-			url: url,
-			success: function(result) {
-				dataObj = findNextCodingChallenge(result.results);
-				console.log(dataObj.url);
-				updateDOM();
-			}
-		});
+
+	request({
+		url: "https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=San-Antonio-PHP-Meetup&status=upcoming&page=8",
+		json: true
+	}, function(error, response, body) {
+
+		if (!error && response.statusCode === 200) {
+			return findNextCodingChallenge(body.results);
+		} else {
+			console.log('Unable to fetch data.');
+		}
+
 	});
+
 }
 
+// find first result that has Coding in the name
 function findNextCodingChallenge(obj) {
 	for (var i = 0; i < obj.length; i++) {
-		var name = obj[i].name;
+		let name = obj[i].name;
 		if (/Coding/ig.test(name)) {
 			return takeImportantData(obj[i]);
 		}
 	}
 }
+
+// take in a result and return name, url, description, time, and location
+function takeImportantData(obj){
+	return {
+		name: obj.name,
+		url: obj.event_url,
+		description: obj.description,
+		time: new Date(obj.time).toDateString(),
+		location: obj.venue.name.substring(0, obj.venue.name.length - 1) + '</br>' + obj.venue.address_1 + '</br>' + obj.venue.city + ', ' + obj.venue.state
+	};
+}
+
+module.exports = getData;
+
 
 // events
 // can't tell if events page is dynamically pulling stuff in - i don't think so, it still lists the meetup from the 28th
@@ -81,22 +99,3 @@ function findNextCodingChallenge(obj) {
 // 	},
 // 	"status": "upcoming"
 // }
-function takeImportantData(obj){
-	return {
-		name: obj.name,
-		url: obj.event_url,
-		description: obj.description,
-		time: new Date(obj.time).toDateString(),
-		location: obj.venue.name.substring(0, obj.venue.name.length - 1) + '</br>' + obj.venue.address_1 + '</br>' + obj.venue.city + ', ' + obj.venue.state
-	};
-}
-
-function updateDOM(){
-	$('#eventName').text(dataObj.name);
-	$('#eventTime').html('<p><i class="fa fa-lg fa-calendar"></i></p><p>' + dataObj.time + '</p><p>6:30 PM – 9:30 PM CDT</p>');
-	$('#eventDescription').html(dataObj.description);
-	$('#eventLocation').html('<i class="fa fa-lg fa-map-marker"></i></br>' + dataObj.location);
-	$('#eventURL').attr('href', dataObj.url);
-}
-
-getData();
