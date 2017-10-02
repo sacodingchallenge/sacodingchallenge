@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>San Antonio Coding Challenge</title>
+
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/semantic/semantic.min.css">
+	<link rel="stylesheet" href="/bootstrap.min.css">
+	<link rel="stylesheet" href="/styles.css">
+
+</head>
+
+<body>
+
+	<%- include partials/nav.ejs %>
+
+	<div class="jumbotron">
+		<div class="content container">
+			<h1>how you can help</h1>
+		</div>
+	</div>
+
+	<div class="container help">
+
+		<div class="ui cards">
+
+			<div class="ui card">
+				<div class="content icon">
+					<span class="fa-stack fa-5x">
+			  			<i class="fa fa-circle fa-stack-2x"></i>
+			  			<i class="fa fa-usd fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="content" id="header">
+					<h3>{become a sponsor}</h3>
+				</div>
+				<div class="content">
+					<p>You can sponsor one or more of the events with monetary or in-kind donations. To see the different sponsorship levels you can visit our <a href="sponsors">sponsors</a> page</p>
+				</div>
+			</div>
+
+			<div class="ui card">
+				<div class="content icon">
+					<span class="fa-stack fa-5x">
+			  			<i class="fa fa-circle fa-stack-2x"></i>
+			  			<i class="fa fa-users fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="content" id="header">
+					<h3>{volunteer}</h3>
+				</div>
+				<div class="content">
+					<p>We need volunteers for the following -</p>
+					<ul>
+						<li>food preparation</li>
+						<li>registering attendance</li>
+						<li>scoring the challenges</li>
+						<li>setting up</li>
+						<li>web site maintenance (see our <a href="https://github.com/sacodingchallenge" target="_blank">Github</a>)</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="ui card">
+				<div class="content icon">
+					<span class="fa-stack fa-5x">
+			  			<i class="fa fa-circle fa-stack-2x"></i>
+			  			<i class="fa fa-share-alt fa-stack-1x fa-inverse"></i>
+					</span>
+				</div>
+				<div class="content" id="header">
+					<h3>{promote}</h3>
+				</div>
+				<div class="content">
+					<p>You can help us promote our events by</p>
+					<ul>
+						<li>sharing on social media (links below)</li>
+						<li>displaying our <a href="downloads/2017-05-26CodingChallenge.pdf">flyers</a> in your workplace</li>
+						<li>word of mouth</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+	</div>	
+
+	<%- include partials/footer.ejs %>
+
+	<script src="/jquery-2.1.4.min.js"></script>
+	<script src="/bootstrap.min.js"></script>
+	<script src="/semantic/semantic.min.js"></script>
+</body>
+
+</html>

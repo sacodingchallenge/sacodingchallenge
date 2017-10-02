@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>San Antonio Coding Challenge</title>
+
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/semantic/semantic.min.css">
+	<link rel="stylesheet" href="/bootstrap.min.css">
+	<link rel="stylesheet" href="/styles.css">
+
+</head>
+
+<body>
+
+	<%- include partials/nav.ejs %>
+
+	<div class="jumbotron">
+		<div class="content container">
+			<h1>about us</h1>
+		</div>
+	</div>
+
+	<div class="container volunteers">
+
+		<h2>{about san antonio coding challenge}</h2>
+		<p>The San Antonio Coding Challenge, which started in January 2016, is a monthly networking event featuring a coding competition and other fun games. The event is put together by volunteers from the <a href="https://www.meetup.com/San-Antonio-PHP-Meetup/">San Antonio Coding Challenge Meetup</a> group (previously known as The San Antonio PHP Meetup group) and paid for by the generous donations of our <a href="sponsors">sponsors</a>. The monthly Coding Challenge is free and open for everyone.</p>
+
+		<h2>{our volunteers}</h2>
+
+		<div class="ui cards">
+
+			<div class="ui card">
+				<div class="image">
+					<img src="/gene.jpg" alt="Gene Carangal">
+				</div>
+				<div class="content">
+					<div class="header">{gene.carangal}</div>
+					<div class="description">
+						Gene is one of the Event Organizers of the San Antonio Coding Challenge meetup group. He is in charge of the menu and prepares most of the food. Gene works as a scrum master for <a href="http://greenlight.md/" target="_blank">Greenlight</a>.
+					</div>
+				</div>
+			</div>
+
+			<div class="ui card">
+				<div class="image">
+					<img src="/travis.jpg" alt="Travis Meyer">
+				</div>
+				<div class="content">
+					<div class="header">{travis.meyer}</div>
+					<div class="description">
+						Travis is in charge of coming up with the code challenges and is the lead scorer. Travis works as a software developer for <a href="http://greenlight.md/" target="_blank">Greenlight</a>.
+					</div>
+				</div>
+			</div>
+
+			<div class="ui card">
+				<div class="image">
+					<img src="/holly.jpg" alt="Holly Bryant">
+				</div>
+				<div class="content">
+					<div class="header">{holly.bryant}</div>
+					<div class="description">
+						Holly is in charge of event participant registration and tabulating the scores. Holly works as a software developer for <a href="http://greenlight.md/" target="_blank">Greenlight</a>.
+					</div>
+				</div>
+			</div>
+
+			<div class="ui card">
+				<div class="image">
+					<img src="/tom.jpg" alt="Tom Young">
+				</div>
+				<div class="content">
+					<div class="header">{tom.young}</div>
+					<div class="description">
+						Tom is the event DJ and also helps with food preparation. He is also in charge of beverage temperature regulation and quality control. Tom works as a software developer for <a href="http://greenlight.md/" target="_blank">Greenlight</a>.
+					</div>
+				</div>
+			</div>
+
+			<div class="ui card">
+				<div class="image">
+					<img src="/jim.jpg" alt="Jim Lochhead">
+				</div>
+				<div class="content">
+					<div class="header">{jim.lochhead}</div>
+					<div class="description">
+						Jim is one of the Event Organizers of the San Antonio Coding Challenge meetup group. He also helps with food preparation. Jim is a UX Designer with Apex Systems.
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<%- include partials/footer.ejs %>
+
+	<script src="/jquery-2.1.4.min.js"></script>
+	<script src="/bootstrap.min.js"></script>
+	<script src="/semantic/semantic.min.js"></script>
+</body>
+
+</html>
