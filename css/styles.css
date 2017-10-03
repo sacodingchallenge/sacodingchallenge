@@ -1,9 +1,5 @@
-/*also need to fix the flexbox on the events page*/
 
-html {
-	font-size: 20px;
-}
-
+/*nav*/
 .navbar-default {
 	border: none;
 }
@@ -16,7 +12,6 @@ html {
 	font-size: 22px;
 }
 
-
 .nav>li>a {
 	padding: 15px;
     margin-top: 15px;
@@ -26,15 +21,58 @@ html {
 	text-align: center;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+/*universal*/
+html {
+	font-size: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
 	font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
 }
 
+.ui.cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 20px auto;
+}
+
+.ui.cards>.card {
+	flex: 1 0 calc(33.333% - 20px);
+	max-width: 400px;
+	min-width: 300px;
+}
+
+.icon {
+	text-align: center;
+}
+
+.ui.card>.content, .ui.cards>.card>.content {
+	border-top: none;
+}
+
+#header {
+	flex-grow: 0;
+	text-align: center;
+}
+
+.fa-2x {
+	font-size: 2rem;
+}
+
+div.extra.content {
+	text-align: center;
+}
+
+.ui.card>.content,
+.ui.cards>.card>.content,
+{
+	font-size: 1rem !important;
+}
+
+
+/*index*/
 .carousel .item img {
 	margin: 0 auto;
 }
@@ -54,19 +92,13 @@ h6 {
 	padding: 10px;
 }
 
-.ui.cards {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin: 20px auto;
-}
-
-.ui.cards>.card {
-	flex: 1 0 calc(33.333% - 20px);
+#networkInfo {
 	max-width: 400px;
-	min-width: 300px;
+	margin: 0 auto;
 }
 
+
+/*events*/
 #events >.card {
 	padding: 20px;
 	width: 100%;
@@ -81,8 +113,8 @@ h6 {
 	margin: 10px 0;
 }
 
-.ui.card:first-child, .ui.card:last-child {
-	margin: 10px;
+#events .extra > * {
+	margin: 5px;
 }
 
 #eventDetails {
@@ -97,19 +129,24 @@ h6 {
 	flex-grow: 20;
 }
 
+#eventURL {
+	background: #e0393e;
+	color: white;
+}
+
+.ui.label>a{
+	opacity: 1;
+}
+
+
+/*help*/
 .help .ui.card>.content,
 .help .ui.cards>.card>.content {
 	flex-grow: 0;
 }
 
-.icon {
-	text-align: center;
-}
 
-#rsvps {
-	margin: 10px;
-}
-
+/*sponsors*/
 .sponsors>.ui.cards>.card,
 .volunteers .card,
 .help .card {
@@ -123,10 +160,6 @@ h6 {
 	border-top: none !important;
 }
 
-.ui.card>.content, .ui.cards>.card>.content {
-	border-top: none;
-}
-
 .ui.cards>.card>.image {
 	background: none;
 }
@@ -137,29 +170,6 @@ h6 {
 
 #codeup {
 	padding: 5px 0;
-}
-
-#header {
-	flex-grow: 0;
-	text-align: center;
-}
-
-.ui.card>.content,
-.ui.cards>.card>.content,
-{
-	font-size: 1rem !important;
-}
-
-.second {
-	font-size: 1.618rem;
-}
-
-div.extra.content {
-	text-align: center;
-}
-
-div.extra.content>a>i {
-	margin: 5px;
 }
 
 .fa-linkedin-square {
@@ -178,6 +188,12 @@ div.extra.content>a>i {
 	color: #f00;
 }
 
+div.extra.content>a>i {
+	margin: 5px;
+}
+
+
+/*footer*/
 footer .fa-twitter:hover {
 	color: #1da1f2;
 }
@@ -195,25 +211,6 @@ footer .fa-instagram:hover {
 footer .fa-instagram:hover {
 	color: #c13584;
 }
-
-#eventURL {
-	background: #e0393e;
-	color: white;
-}
-
-.ui.label>a{
-	opacity: 1;
-}
-
-.fa-2x {
-	font-size: 2rem;
-}
-
-#networkInfo {
-	max-width: 400px;
-	margin: 0 auto;
-}
-
 
 footer {
 	text-align: center;
@@ -241,6 +238,8 @@ footer ul {
 	padding: 0;
 }
 
+
+/*media queries*/
 @media (min-width: 768px) {
 	.navbar-nav {
 		margin: 7px -15px;
