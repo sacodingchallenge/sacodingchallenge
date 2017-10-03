@@ -18,26 +18,28 @@
 
 	<div class="container">
 
-		<div class="ui cards">
+		<div class="ui cards" id="events">
 			
 		<% for (var i = 0; i < data.length; i++) { %>
 			
-			<div id="event">
+			<div class="ui card event">
 
-				<div class="ui card" id="mainEventInfo">
+				<div id="mainEventInfo">
 					<div class="content">
-						<div class="header" id="eventName"><%= data[i].name %></div>
+						<h3 class="header" id="eventName"><%= data[i].name %></h3>
 					</div>
 					<div class="content" id="eventDescription"><%- data[i].description %></div>
 					<div class="extra content">
-						<a href="<%= data[i].url %>" id="eventURL" target="_blank"><i class="fa fa-lg fa-meetup"></i></a>
-						<label class="ui label" id="rsvps"><i class="fa fa-lg fa-users"></i> 
+						<button class="ui label" id="eventURL">
+							<a href="<%= data[i].url %>" target="_blank"><i class="fa fa-lg fa-meetup"></i> Event Link</a>
+						</button>
+						<div class="ui label" id="rsvps"><i class="fa fa-lg fa-users"></i> 
 							<%= data[i].rsvps %> <%= data[i].rsvps === 1 ? 'person' : 'people' %> going
-						</label>
+						</div>
 					</div>
 				</div>
 
-				<div class="ui card" id="eventDetails">
+				<div id="eventDetails">
 					<div class="content">
 						<div id="eventTime">
 							<p><i class="fa fa-lg fa-calendar"></i></p>

@@ -67,14 +67,34 @@ h6 {
 	min-width: 300px;
 }
 
+#events >.card {
+	padding: 20px;
+	width: 100%;
+	flex: 1 1 100%;
+	max-width: 100%;
+	min-width: none;
+	display: flex;
+	flex-direction: row;
+}
+
+#events .extra {
+	margin: 10px 0;
+}
+
 .ui.card:first-child, .ui.card:last-child {
 	margin: 10px;
 }
 
 #eventDetails {
 	text-align: center;
-	flex: 0 0 auto;
-	min-width: 0px;
+	flex: 1 0 200px;
+	margin-left: 10px;
+	border-left: 1px solid #ccc;
+	border-radius: 0 !important;
+}
+
+#mainEventInfo {
+	flex-grow: 20;
 }
 
 .help .ui.card>.content,
@@ -177,15 +197,12 @@ footer .fa-instagram:hover {
 }
 
 #eventURL {
-	text-align: center;
-	color: #e0393e;
-	font-size: 1.618rem;
+	background: #e0393e;
+	color: white;
 }
 
-#event {
-	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
+.ui.label>a{
+	opacity: 1;
 }
 
 .fa-2x {
@@ -224,21 +241,9 @@ footer ul {
 	padding: 0;
 }
 
-@media (max-width: 768px) {
-	#eventDetails {
-		flex-grow: 1;
-		max-width: 400px;
-		min-width: 300px;
-	}
-}
-
 @media (min-width: 768px) {
 	.navbar-nav {
 		margin: 7px -15px;
-	}
-	#mainEventInfo {
-		max-width: 800px;
-		flex-grow: 20;
 	}
 }
 
@@ -246,5 +251,14 @@ footer ul {
 	ul.nav.navbar-nav.navbar-right {
 		float: none;
 		margin: 7px auto;
+	}
+}
+
+@media (max-width: 600px) {
+	#eventDetails {
+		border: none;
+	}
+	#events>.card {
+		flex-direction: column;
 	}
 }
