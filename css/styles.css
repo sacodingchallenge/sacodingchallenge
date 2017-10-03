@@ -61,8 +61,9 @@ h6 {
 
 #eventDetails {
 	text-align: center;
-/*	flex: 0 0 auto;
-*/}
+	flex: 0 0 auto;
+	min-width: 0px;
+}
 
 .help .ui.card>.content,
 .help .ui.cards>.card>.content {
@@ -71,6 +72,10 @@ h6 {
 
 .icon {
 	text-align: center;
+}
+
+#rsvps {
+	margin: 10px;
 }
 
 .sponsors>.ui.cards>.card,
@@ -139,8 +144,7 @@ div.extra.content>a>i {
 
 #eventURL {
 	text-align: center;
-	background: #e0393e;
-	color: #fff;
+	color: #e0393e;
 }
 
 .fa-2x {
@@ -177,6 +181,14 @@ footer li {
 
 footer ul {
 	padding: 0;
+}
+
+@media (max-width: 768px) {
+	#eventDetails {
+		flex-grow: 1;
+		max-width: 400px;
+		min-width: 300px;
+	}
 }
 
 @media (min-width: 768px) {

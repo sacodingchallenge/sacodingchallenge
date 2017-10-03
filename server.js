@@ -49,7 +49,8 @@ function takeImportantData(obj){
 		venue: obj.venue.name.substring(0, obj.venue.name.length - 1),
 		address: obj.venue.address_1,
 		city: obj.venue.city,
-		state: obj.venue.state
+		state: obj.venue.state,
+		rsvps: obj.yes_rsvp_count
 	};
 }
 
