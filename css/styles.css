@@ -14,7 +14,6 @@
 
 .nav>li>a {
 	padding: 15px;
-    margin-top: 15px;
 }
 
 .navbar-collapse {
@@ -247,6 +246,9 @@ footer ul {
 @media (min-width: 768px) {
 	.navbar-nav {
 		margin: 7px -15px;
+	}
+	.nav>li>a {
+	    margin-top: 15px;
 	}
 }
 
