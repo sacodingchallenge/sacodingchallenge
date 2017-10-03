@@ -2,16 +2,8 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>San Antonio Coding Challenge</title>
-
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/semantic/semantic.min.css">
-	<link rel="stylesheet" href="/bootstrap.min.css">
-	<link rel="stylesheet" href="/styles.css">
-
+	<title>San Antonio Coding Challenge | Events</title>
+	<%- include partials/meta.ejs %>
 </head>
 
 <body>
@@ -25,48 +17,50 @@
 	</div>
 
 	<div class="container">
-		
+
 		<div class="ui cards">
+			
+		<% for (var i = 0; i < data.length; i++) { %>
+			
+			<div id="event">
 
-			<div class="ui card" id="mainEventInfo">
-				<div class="content">
-					<div class="header" id="eventName"><%= name %></div>
-				</div>
-				<div class="content" id="eventDescription"><%- description %></div>
-				<div class="extra content">
-					<a href="<%= url %>" id="eventURL" target="_blank"><i class="fa fa-lg fa-meetup"></i></a>
-					<label class="ui label" id="rsvps"><i class="fa fa-lg fa-users"></i> <%= rsvps %> people going</label>
-				</div>
-			</div>
-
-			<div class="ui card" id="eventDetails">
-				<div class="content">
-					<div id="eventTime">
-						<p><i class="fa fa-lg fa-calendar"></i></p>
-						<p><%= time %></p>
-						<p>6:30 PM – 9:30 PM CDT</p>
+				<div class="ui card" id="mainEventInfo">
+					<div class="content">
+						<div class="header" id="eventName"><%= data[i].name %></div>
+					</div>
+					<div class="content" id="eventDescription"><%- data[i].description %></div>
+					<div class="extra content">
+						<a href="<%= data[i].url %>" id="eventURL" target="_blank"><i class="fa fa-lg fa-meetup"></i></a>
+						<label class="ui label" id="rsvps"><i class="fa fa-lg fa-users"></i> 
+							<%= data[i].rsvps %> <%= data[i].rsvps === 1 ? 'person' : 'people' %> going
+						</label>
 					</div>
 				</div>
-				<div class="content">
-					<div id="eventLocation">
-						<p><i class="fa fa-lg fa-map-marker"></i></p>
-						<p><%= venue %></p>
-						<p><%= address %></p>
-						<p><%= city %>, <%= state %></p>
+
+				<div class="ui card" id="eventDetails">
+					<div class="content">
+						<div id="eventTime">
+							<p><i class="fa fa-lg fa-calendar"></i></p>
+							<p><%= data[i].time %></p>
+							<p>6:30 PM – 9:30 PM CDT</p>
+						</div>
+					</div>
+					<div class="content">
+						<div id="eventLocation">
+							<p><i class="fa fa-lg fa-map-marker"></i></p>
+							<p><%= data[i].venue %></p>
+							<p><%= data[i].address %></p>
+							<p><%= data[i].city %>, <%= data[i].state %></p>
+						</div>
 					</div>
 				</div>
+
 			</div>
+
+	    <% } %>		
 
 		</div>
 
 	</div>
 
 	<%- include partials/footer.ejs %>
-
-	<script src="/jquery-2.1.4.min.js"></script>
-	<script src="/bootstrap.min.js"></script>
-	<script src="/semantic/semantic.min.js"></script>
-
-</body>
-
-</html>

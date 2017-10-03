@@ -16,7 +16,8 @@ html {
 
 
 .nav>li>a {
-	padding: 30px 15px 0 15px;
+	padding: 15px;
+    margin-top: 15px;
 }
 
 .navbar-collapse {
@@ -41,6 +42,11 @@ h6 {
 	background: transparent;
 }
 
+.fa-chevron-left, .fa-chevron-right {
+	position: absolute;
+	top: 50%;
+}
+
 .text.content {
 	margin: 0 auto;
 	padding: 10px;
@@ -57,6 +63,10 @@ h6 {
 	flex: 1 0 calc(33.333% - 20px);
 	max-width: 400px;
 	min-width: 300px;
+}
+
+.ui.card:first-child, .ui.card:last-child {
+	margin: 10px;
 }
 
 #eventDetails {
@@ -89,6 +99,10 @@ h6 {
 .help>.ui.cards>.card .content,
 .help>.ui.cards>.card>.extra {
 	border-top: none !important;
+}
+
+.ui.card>.content, .ui.cards>.card>.content {
+	border-top: none;
 }
 
 .ui.cards>.card>.image {
@@ -142,9 +156,34 @@ div.extra.content>a>i {
 	color: #f00;
 }
 
+footer .fa-twitter:hover {
+	color: #1da1f2;
+}
+footer .fa-facebook:hover {
+	color: #3b5998;
+}
+footer .fa-meetup:hover {
+	color: #e0393e;
+}
+
+footer .fa-instagram:hover {
+	color: #c13584;
+}
+
+footer .fa-instagram:hover {
+	color: #c13584;
+}
+
 #eventURL {
 	text-align: center;
 	color: #e0393e;
+	font-size: 1.618rem;
+}
+
+#event {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .fa-2x {

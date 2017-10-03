@@ -2,15 +2,8 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<title>San Antonio Coding Challenge</title>
-
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/bootstrap.min.css">
-	<link rel="stylesheet" href="/styles.css">
-
+	<%- include partials/meta.ejs %>
 </head>
 
 <body>
@@ -59,10 +52,10 @@
 
 		</div>
 		<a class="left carousel-control" href="#locations" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="fa fa-lg fa-chevron-left"></span>
 		</a>
 		<a class="right carousel-control" href="#locations" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right"></span>
+			<span class="fa fa-lg fa-chevron-right"></span>
 		</a>
 	</div>
 
@@ -127,9 +120,3 @@
 	</div>
 
 	<%- include partials/footer.ejs %>
-
-	<script src="/jquery-2.1.4.min.js"></script>
-	<script src="/bootstrap.min.js"></script>
-</body>
-
-</html>

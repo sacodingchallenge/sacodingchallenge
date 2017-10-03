@@ -14,12 +14,13 @@ function getData() {
 	}, function(error, response, body) {
 
 		if (!error && response.statusCode === 200) {
-			var data = findNextCodingChallenge(body.results);
+			var data = findNextCodingChallenges(body.results);
 			// figure out a better way to do this
 			// problem is the api call is async, and so when you try to pass it in it won't work
 			// app.get('/events') should be with the other app.get's down below
+			// promises?
 			app.get('/events', (req, res) => {
-				res.render('events.ejs', data);
+				res.render('events.ejs', {data: data});
 			});
 		} else {
 			console.log('Unable to fetch data.');
@@ -29,17 +30,16 @@ function getData() {
 
 }
 
-// find first result that has Coding in the name
-function findNextCodingChallenge(obj) {
-	for (var i = 0; i < obj.length; i++) {
-		let name = obj[i].name;
-		if (/Coding/ig.test(name)) {
-			return takeImportantData(obj[i]);
-		}
-	}
+function findNextCodingChallenges(obj) {
+	return obj.filter(function(event){
+		return /coding/ig.test(event.name);
+	}).map(function(event){
+		return takeImportantData(event);
+	});
+
 }
 
-// take in a result and return name, url, description, time, and location
+// take in a raw event and only return name, url, description, time, and location, and rsvps
 function takeImportantData(obj){
 	return {
 		name: obj.name,
@@ -64,8 +64,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/css'));
 app.use(express.static(__dirname + '/js'));
 app.use(express.static(__dirname + '/images'));
-app.use(express.static(__dirname + '/fonts'));
 app.use(express.static(__dirname + '/font-awesome-4.7.0'));
+app.use(express.static(__dirname + '/fonts'));
 app.use(express.static(__dirname + '/lib'));
 
 app.get('/', (req, res) => {
