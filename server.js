@@ -1,6 +1,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const request = require('request');
+const moment = require('moment');
 
 // ===============================================================
 
@@ -41,11 +42,12 @@ function findNextCodingChallenges(obj) {
 
 // take in a raw event and only return name, url, description, time, and location, and rsvps
 function takeImportantData(obj){
+	moment.locale('en');
 	return {
 		name: obj.name,
 		url: obj.event_url,
 		description: obj.description,
-		time: new Date(obj.time).toDateString(),
+		time: moment(obj.time).format("ddd, MMM DD, YYYY"),
 		venue: obj.venue.name.substring(0, obj.venue.name.length - 1),
 		address: obj.venue.address_1,
 		city: obj.venue.city,
