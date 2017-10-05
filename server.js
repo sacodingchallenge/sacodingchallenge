@@ -1,7 +1,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const request = require('request');
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 // ===============================================================
 
@@ -47,7 +47,7 @@ function takeImportantData(obj){
 		name: obj.name,
 		url: obj.event_url,
 		description: obj.description,
-		time: moment(obj.time).format("ddd, MMM DD, YYYY"),
+		time: moment(obj.time).tz("America/Monterrey").format("ddd, MMM DD, YYYY"),
 		venue: obj.venue.name.substring(0, obj.venue.name.length - 1),
 		address: obj.venue.address_1,
 		city: obj.venue.city,
