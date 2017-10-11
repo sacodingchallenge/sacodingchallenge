@@ -10,7 +10,7 @@ getData();
 function getData() {
 
 	request({
-		url: "https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=San-Antonio-PHP-Meetup&status=upcoming&page=8",
+		url: "https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=San-Antonio-PHP-Meetup&status=upcoming&page=50",
 		json: true
 	}, function(error, response, body) {
 
@@ -32,9 +32,7 @@ function getData() {
 }
 
 function findNextCodingChallenges(obj) {
-	return obj.filter(function(event){
-		return /coding/ig.test(event.name);
-	}).map(function(event){
+	return obj.map(function(event){
 		return takeImportantData(event);
 	});
 
@@ -47,8 +45,8 @@ function takeImportantData(obj){
 		name: obj.name,
 		url: obj.event_url,
 		description: obj.description,
-		time: moment(obj.time).tz("America/Monterrey").format("ddd, MMM DD, YYYY"),
-		venue: obj.venue.name.substring(0, obj.venue.name.length - 1),
+		time: moment(obj.time).tz("America/Monterrey").format("ddd, MMM DD, YYYY h:mma"),
+		venue: obj.venue.name.substring(0, obj.venue.name.length),
 		address: obj.venue.address_1,
 		city: obj.venue.city,
 		state: obj.venue.state,
@@ -99,3 +97,14 @@ app.listen(port, () => {
 //   address: '131 Soledad Street',
 //   city: 'San Antonio',
 //   state: 'TX' }
+
+// make a api call to 
+// https://api.meetup.com/2/photo_albums?&sign=true&photo-host=public&group_id=18644645&page=20
+// use photo_album_id to make another call to 
+// https://api.meetup.com/2/photos?&sign=true&photo-host=public&photo_album_id=28111592&page=20
+// which will give you all of the photos in the album.
+// maybe don't show albums that only have one picture? have like a minimum of 3?
+// have a photos page and have cards for each of the albums?
+// have the cards be linked to the photo album on the meetup website?
+// have the picture of the card be a real picture from the album
+// have the event date and name

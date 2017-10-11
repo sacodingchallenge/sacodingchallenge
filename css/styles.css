@@ -146,6 +146,16 @@ div.extra.content {
 }
 
 
+#eventDescription > p > img {
+	max-width: 300px;
+	width: 100%;
+}
+
+#showMoreEvents {
+	margin: 0 auto;
+	font-size: 15px;
+}
+
 /*help*/
 .help .ui.card>.content,
 .help .ui.cards>.card>.content {
