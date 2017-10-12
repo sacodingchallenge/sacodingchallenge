@@ -162,6 +162,18 @@ div.extra.content {
 	flex-grow: 0;
 }
 
+/*photos*/
+
+.photos a:hover {
+	text-decoration: none;
+	color: inherit !important;
+}
+
+.photos img {
+	height: 273.35px !important;
+	object-fit: cover;
+}
+
 
 /*sponsors*/
 .sponsors>.ui.cards>.card,

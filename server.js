@@ -3,11 +3,14 @@ const ejs = require('ejs');
 const request = require('request');
 const moment = require('moment-timezone');
 
+const findNextEvents = require('./js/nextEvent.js');
+const getPhotosArr = require('./js/getPhotos.js');
+
 // ===============================================================
 
-getData();
+getEventData();
 
-function getData() {
+function getEventData() {
 
 	request({
 		url: "https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=San-Antonio-PHP-Meetup&status=upcoming&page=50",
@@ -15,7 +18,7 @@ function getData() {
 	}, function(error, response, body) {
 
 		if (!error && response.statusCode === 200) {
-			var data = findNextCodingChallenges(body.results);
+			var data = findNextEvents(body.results);
 			// figure out a better way to do this
 			// problem is the api call is async, and so when you try to pass it in it won't work
 			// app.get('/events') should be with the other app.get's down below
@@ -31,27 +34,31 @@ function getData() {
 
 }
 
-function findNextCodingChallenges(obj) {
-	return obj.map(function(event){
-		return takeImportantData(event);
+getPhotos();
+
+// kinda a duplicate
+// only difference is url, file name, format function
+// maybe make a function and call it twice with each of these?
+function getPhotos() {
+
+	request({
+		url: "https://api.meetup.com/2/photo_albums?&sign=true&photo-host=public&group_id=18644645&page=20",
+		json: true
+	}, function(error, response, body) {
+
+		if (!error && response.statusCode === 200) {
+			
+			var photos = getPhotosArr(body.results);
+
+			app.get('/photos', (req, res) => {
+				res.render('photos.ejs', {photos: photos});
+			});
+		} else {
+			console.log('Unable to fetch data.');
+		}
+
 	});
 
-}
-
-// take in a raw event and only return name, url, description, time, and location, and rsvps
-function takeImportantData(obj){
-	moment.locale('en');
-	return {
-		name: obj.name,
-		url: obj.event_url,
-		description: obj.description,
-		time: moment(obj.time).tz("America/Monterrey").format("ddd, MMM DD, YYYY h:mma"),
-		venue: obj.venue.name.substring(0, obj.venue.name.length),
-		address: obj.venue.address_1,
-		city: obj.venue.city,
-		state: obj.venue.state,
-		rsvps: obj.yes_rsvp_count
-	};
 }
 
 // ===============================================================
@@ -103,8 +110,3 @@ app.listen(port, () => {
 // use photo_album_id to make another call to 
 // https://api.meetup.com/2/photos?&sign=true&photo-host=public&photo_album_id=28111592&page=20
 // which will give you all of the photos in the album.
-// maybe don't show albums that only have one picture? have like a minimum of 3?
-// have a photos page and have cards for each of the albums?
-// have the cards be linked to the photo album on the meetup website?
-// have the picture of the card be a real picture from the album
-// have the event date and name
