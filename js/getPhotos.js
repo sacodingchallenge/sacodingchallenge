@@ -3,6 +3,8 @@ const moment = require('moment-timezone');
 function getPhotosArr(arr) {
 	return arr.map(function(album){
 		return filterPhotoObj(album);
+	}).sort(function(a, b){
+		return b.rawTime - a.rawTime;
 	});
 }
 
@@ -13,8 +15,9 @@ function filterPhotoObj(obj){
 		title: obj.title,
 		thumbnail: obj.album_photo.photo_link,
 		latestActivity: moment(obj.updated).tz("America/Monterrey").format("MMM DD, YYYY"),
+		rawTime: obj.updated,
 		numberOfPhotos: obj.photo_count,
-		link: obj.link,
+		link: obj.link
 	};
 }
 
