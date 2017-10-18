@@ -175,9 +175,8 @@ div.extra.content {
 }
 
 
-/*sponsors*/
+/*sponsors / about */
 .sponsors>.ui.cards>.card,
-.volunteers .card,
 .help .card {
 	box-shadow: none !important;
 }
