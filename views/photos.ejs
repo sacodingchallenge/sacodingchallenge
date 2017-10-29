@@ -9,45 +9,46 @@
 
 <body>
 
+	<%- include partials/ga.ejs %>
 	<%- include partials/nav.ejs %>
 
-		<div class="jumbotron">
-			<div class="content container">
-				<h1>photos</h1>
-			</div>
+	<div class="jumbotron">
+		<div class="content container">
+			<h1>photos</h1>
 		</div>
+	</div>
 
-		<div class="container">
+	<div class="container">
 
-			<div class="ui cards photos">
+		<div class="ui cards photos">
 
-				<% for (var i = 0; i < photos.length; i++) { %>
+			<% for (var i = 0; i < photos.length; i++) { %>
 
-					<div class="ui card">
-						<a class="image" href="<%= photos[i].link %>" target="_blank">
-							<img src="<%= photos[i].thumbnail %>" alt="<%= photos[i].title %>">
+				<div class="ui card">
+					<a class="image" href="<%= photos[i].link %>" target="_blank">
+						<img src="<%= photos[i].thumbnail %>" alt="<%= photos[i].title %>">
+					</a>
+					<div class="content">
+						<a class="header" href="<%= photos[i].link %>" target="_blank">
+							<%= photos[i].title %>
 						</a>
-						<div class="content">
-							<a class="header" href="<%= photos[i].link %>" target="_blank">
-								<%= photos[i].title %>
-							</a>
-							<div class="meta">
-								<a class="date" href="<%= photos[i].link %>" target="_blank">Activity on <%= photos[i].latestActivity %></a>
-							</div>
-						</div>
-						<div class="extra content">
-							<a href="<%= photos[i].link %>" target="_blank">
-								<i class="photo icon"></i><%= photos[i].numberOfPhotos %> <%= photos[i].numberOfPhotos === 1 ? 'photo' : 'photos' %> 
-							</a>
+						<div class="meta">
+							<a class="date" href="<%= photos[i].link %>" target="_blank">Activity on <%= photos[i].latestActivity %></a>
 						</div>
 					</div>
+					<div class="extra content">
+						<a href="<%= photos[i].link %>" target="_blank">
+							<i class="photo icon"></i><%= photos[i].numberOfPhotos %> <%= photos[i].numberOfPhotos === 1 ? 'photo' : 'photos' %> 
+						</a>
+					</div>
+				</div>
 
-				<% } %>
-
-			</div>
+			<% } %>
 
 		</div>
 
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-		<script src="/events.js"></script>
-		<%- include partials/footer.ejs %>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="/events.js"></script>
+	<%- include partials/footer.ejs %>

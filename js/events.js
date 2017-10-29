@@ -14,7 +14,5 @@ $(document).ready(function(){
 		if ($('.event:hidden').length === 0) {
 			$('#showMoreEvents').hide();
 		}
-		// maybe don't use a button, maybe just automatically load as user scrolls to the bottom
-
 	});
 });
