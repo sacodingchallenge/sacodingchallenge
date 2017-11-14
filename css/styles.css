@@ -220,6 +220,10 @@ div.extra.content>a>i {
 	margin: 5px;
 }
 
+/*mailing list*/
+#mc_embed_signup form {
+	padding: 10px 0 !important;
+}
 
 /*footer*/
 footer .fa-twitter:hover {

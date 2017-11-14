@@ -91,6 +91,10 @@ app.get('/help', (req, res) => {
 	res.render('help');
 });
 
+app.get('/mailinglist', (req, res) => {
+	res.render('mailinglist');
+});
+
 app.listen(port, () => {
 	console.log(`Server is up on port ${port}`);
 });
