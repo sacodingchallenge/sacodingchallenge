@@ -91,8 +91,8 @@ app.get('/help', (req, res) => {
 	res.render('help');
 });
 
-app.get('/mailinglist', (req, res) => {
-	res.render('mailinglist');
+app.get('/subscribe', (req, res) => {
+	res.render('subscribe');
 });
 
 app.listen(port, () => {
