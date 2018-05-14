@@ -27,27 +27,27 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/events", async (req, res) => {
-	try {
-		let response = await axios(
-			"https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=San-Antonio-PHP-Meetup&status=upcoming&page=50"
-		);
-		let data = findNextEvents(response.data.results);
-		res.render("events.ejs", { data });
-	} catch (e) {
-		res.status(500).send("Something went wrong!");
-	}
+  try {
+    let response = await axios(
+      "https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=San-Antonio-PHP-Meetup&status=upcoming&page=50"
+    );
+    let data = findNextEvents(response.data.results);
+    res.render("events.ejs", { data });
+  } catch (e) {
+    res.status(500).send("Something went wrong!");
+  }
 });
 
 app.get("/photos", async (req, res) => {
-	try {
-		let response = await axios(
-			"https://api.meetup.com/2/photo_albums?&sign=true&photo-host=public&group_id=18644645&page=20"
-		);
-		let photos = getPhotosArr(response.data.results);
-		res.render("photos.ejs", { photos });
-	} catch (e) {
-		res.status(500).send("Something went wrong!");
-	}
+  try {
+    let response = await axios(
+      "https://api.meetup.com/2/photo_albums?&sign=true&photo-host=public&group_id=18644645&page=20"
+    );
+    let photos = getPhotosArr(response.data.results);
+    res.render("photos.ejs", { photos });
+  } catch (e) {
+    res.status(500).send("Something went wrong!");
+  }
 });
 
 app.get("/sponsors", (req, res) => {
