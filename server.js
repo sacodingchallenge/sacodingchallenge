@@ -1,6 +1,5 @@
 const express = require("express");
 const axios = require("axios");
-const compression = require("compression");
 
 const findNextEvents = require("./js/nextEvent.js");
 const getPhotosArr = require("./js/getPhotos.js");
@@ -9,8 +8,6 @@ const port = process.env.PORT || 3000;
 var app = express();
 
 app.set("view engine", "ejs");
-
-app.use(compression());
 
 app.use(express.static(__dirname + "/css"));
 app.use(express.static(__dirname + "/js"));
