@@ -11,9 +11,10 @@ function getPhotosArr(arr) {
 // take in a raw photo album and only return title, thumbnail, time of latest activity, number of photos, and a link to the album
 function filterPhotoObj(obj){
 	moment.locale('en');
+	const thumbnail = !!obj.album_photo ? obj.album_photo.photo_link : "http://sacodingchallenge.com/SAlogoBIG.jpg";
 	return {
 		title: obj.title,
-		thumbnail: obj.album_photo.photo_link,
+		thumbnail,
 		latestActivity: moment(obj.updated).tz("America/Monterrey").format("MMM DD, YYYY"),
 		rawTime: obj.updated,
 		numberOfPhotos: obj.photo_count,
