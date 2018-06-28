@@ -32,7 +32,7 @@ app.get("/events", async (req, res) => {
       "https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=San-Antonio-PHP-Meetup&status=upcoming&page=50"
     );
     let data = findNextEvents(response.data.results);
-    res.render("events.ejs", { data });
+    res.render("events", { data });
   } catch (e) {
     res.status(500).send("Something went wrong!");
   }
@@ -44,7 +44,7 @@ app.get("/photos", async (req, res) => {
       "https://api.meetup.com/2/photo_albums?&sign=true&photo-host=public&group_id=18644645&page=20"
     );
     let photos = getPhotosArr(response.data.results);
-    res.render("photos.ejs", { photos });
+    res.render("photos", { photos });
   } catch (e) {
     res.status(500).send("Something went wrong!");
   }

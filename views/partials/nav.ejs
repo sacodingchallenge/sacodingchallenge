@@ -14,12 +14,12 @@
 		<!-- navbar-header -->
 		<div class="collapse navbar-collapse" id="collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="about">{about}</a></li>
-				<li><a href="events">{events}</a></li>
-				<li><a href="photos">{photos}</a></li>
-				<li><a href="sponsors">{sponsors}</a></li>
-				<li><a href="help">{help}</a></li>
-				<li><a href="subscribe">{subscribe}</a></li>
+				<li class="<%- page === 'about' ? 'active' : '' -%>"><a href="about">{about}</a></li>
+				<li class="<%- page === 'events' ? 'active' : '' -%>"><a href="events">{events}</a></li>
+				<li class="<%- page === 'photos' ? 'active' : '' -%>"><a href="photos">{photos}</a></li>
+				<li class="<%- page === 'sponsors' ? 'active' : '' -%>"><a href="sponsors">{sponsors}</a></li>
+				<li class="<%- page === 'help' ? 'active' : '' -%>"><a href="help">{help}</a></li>
+				<li class="<%- page === 'subscribe' ? 'active' : '' -%>"><a href="subscribe">{subscribe}</a></li>
 			</ul>
 		</div>
 	</div>
