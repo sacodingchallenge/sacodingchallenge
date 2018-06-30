@@ -250,6 +250,12 @@ footer {
 	color: #777;
 }
 
+footer>ul {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 footer>ul>li>a {
 	color: #777;
 }
