@@ -1,8 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 
-const findNextEvents = require("./js/nextEvent.js");
-const getPhotosArr = require("./js/getPhotos.js");
+const { formatPhotos, formatEvents } = require("./js/formatAPIData.js");
 
 const port = process.env.PORT || 3000;
 var app = express();
@@ -31,7 +30,7 @@ app.get("/events", async (req, res) => {
     let response = await axios(
       "https://api.meetup.com/2/events?&sign=true&photo-host=public&group_urlname=San-Antonio-PHP-Meetup&status=upcoming&page=50"
     );
-    let data = findNextEvents(response.data.results);
+    let data = formatEvents(response.data.results);
     res.render("events", { data });
   } catch (e) {
     res.status(500).send("Something went wrong!");
@@ -43,7 +42,7 @@ app.get("/photos", async (req, res) => {
     let response = await axios(
       "https://api.meetup.com/2/photo_albums?&sign=true&photo-host=public&group_id=18644645&page=20"
     );
-    let photos = getPhotosArr(response.data.results);
+    let photos = formatPhotos(response.data.results);
     res.render("photos", { photos });
   } catch (e) {
     res.status(500).send("Something went wrong!");
