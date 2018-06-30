@@ -1,7 +1,4 @@
 $(document).ready(function(){
-	// align gifs
-	$('#eventDescription p img').parent().css('text-align', 'center');
-
 	var num = 5;
 	$('.ui.card.event').hide();
 	// show first 5

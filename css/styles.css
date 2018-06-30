@@ -103,7 +103,7 @@ div.extra.content {
 	width: 100%;
 	flex: 1 1 100%;
 	max-width: 100%;
-	min-width: none;
+	min-width: unset;
 	display: flex;
 	flex-direction: row;
 }
@@ -149,6 +149,8 @@ div.extra.content {
 #eventDescription > p > img {
 	max-width: 300px;
 	width: 100%;
+	display: block;
+	margin: 0 auto;
 }
 
 #showMoreEvents {
